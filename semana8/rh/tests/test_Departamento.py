@@ -29,9 +29,9 @@ class TestDepartamento:
 
     def test_responsavel(self):
         departamento = Departamento('Departamento XYZ')
-        assert departamento.responsavel is None
-        departamento.informar_responsavel('José da Silva', 1, 1, 1990)
-        assert departamento.responsavel == 'José da Silva'
+        assert departamento.responsavel == None
+        responsavel = {'nome': 'José da Silva', 'dia': 1, 'mes': 1, 'ano': 1990}
+        departamento = Departamento('Departamento XYZ', responsavel)
 
     def test_responsavel_substituido(self):
         departamento = Departamento('Departamento XYZ')
@@ -49,9 +49,9 @@ class TestDepartamento:
         assert len(departamento.colaboradores) == 2
 
     def test_verificar_aniversariantes(self):
-        retorno = [('João Oliveira', '1992-03-18'),
-                   ('Luis Fernando', '2000-03-18')]
-        dt1 = date.today() - timedelta(days=4)
+        retorno = [('João Oliveira', '1992-04-10', 'Departamento XYZ'),
+                   ('Luis Fernando', '2000-04-10', 'Departamento XYZ')]
+        dt1 = date.today() - timedelta(days=11)
         hoje = date.today()
         depto = Departamento('Departamento XYZ')
         depto.informar_responsavel('José da Silva', dt1.day, dt1.month, 1990)
@@ -62,6 +62,6 @@ class TestDepartamento:
         aniversariantes = depto.verificar_aniversariantes()
         assert aniversariantes == retorno
         assert len(aniversariantes) == 2
-        assert len(aniversariantes[0]) == 2
+        assert len(aniversariantes[0]) == 3
         assert type(aniversariantes[0]) == tuple
         assert type(aniversariantes) == list
