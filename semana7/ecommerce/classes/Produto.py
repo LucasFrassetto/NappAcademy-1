@@ -4,6 +4,7 @@ class Produto:
             raise ValueError('Preço negativo')
         self._codigo_ean = kwargs.get('ean', '')
         self._preco = kwargs.get('preco', 0)
+        self._quantidade = kwargs.get('quantidade', 0)
 
     @property
     def preco(self):
@@ -13,9 +14,17 @@ class Produto:
     def ean(self):
         return self._codigo_ean
 
+    @property
+    def quantidade(self):
+        return self._quantidade
+
     @preco.setter
     def preco(self, value):
         self._preco = value
+
+    @quantidade.setter
+    def quantidade(self, value):
+        self._quantidade = value
 
     def __str__(self):
         return self._codigo_ean

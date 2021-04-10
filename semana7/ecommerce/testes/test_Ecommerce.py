@@ -17,7 +17,7 @@ class TestEcommerce:
         assert objeto.nome == 'Lojão Tabajara'
         objeto.nome = 'Lojão Tabajara Centro'
         assert objeto.nome == 'Lojão Tabajara Centro'
-        assert objeto.estoque == []
+        assert objeto.estoque == {}
 
     def test_str_repr(self):
         objeto = Loja('Lojão Tabajara')
@@ -33,7 +33,7 @@ class TestEcommerce:
         loja = Loja('Lojão Tabajara')
         loja.add_estoque('12345678911', 15, 3)
         loja.add_estoque('123', 12, 5)
-        assert len(loja.estoque) == 8
+        assert len(loja.estoque) == 2
 
     def test_quantidade_produtos(self):
         loja = Loja('Lojão Tabajara')
@@ -49,9 +49,9 @@ class TestEcommerce:
     def test_metodo_comprar_ok(self):
         loja = Loja('Lojão Tabajara')
         loja.add_estoque('123', 15, 3)
-        assert len(loja.estoque) == 3
+        assert loja.estoque['123'].quantidade == 3
         loja.comprar('123')
-        assert len(loja.estoque) == 2
+        assert loja.estoque['123'].quantidade == 2
 
     def test_metodo_comprar_sem_produto(self):
         loja = Loja('Lojão Tabajara')
@@ -60,24 +60,24 @@ class TestEcommerce:
     def test_metodo_comprar_ok2(self):
         loja = Loja('Lojão Tabajara')
         loja.add_estoque('123', 15, 1)
-        assert len(loja.estoque) == 1
+        assert loja.estoque['123'].quantidade == 1
         loja.comprar('123')
-        assert len(loja.estoque) == 0
+        assert loja.estoque['123'].quantidade == 0
         assert loja.comprar('123') is None
 
     def test_devolver_carrinho(self):
         loja = Loja('Lojão Tabajara')
         loja.add_estoque('123', 15, 10)
         loja.add_estoque('1234', 20, 5)
-        assert len(loja.estoque) == 15
+        assert len(loja.estoque) == 2
         cliente = Cliente('John Doe')
         pedido = Pedido(cliente)
         pedido.add_item(loja.comprar('1234'))
         pedido.add_item(loja.comprar('123'))
         assert len(pedido.itens) == 2
-        assert len(loja.estoque) == 13
+        assert len(loja.estoque) == 2
         assert loja.quantidade_produtos('1234') == 4
         assert loja.quantidade_produtos('123') == 9
         loja.devolver_carrinho(pedido)
         assert len(pedido.itens) == 0
-        assert len(loja.estoque) == 15
+        assert len(loja.estoque) == 2
