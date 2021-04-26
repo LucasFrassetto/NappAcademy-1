@@ -1,3 +1,4 @@
+# teste
 algoritmo==>SQLite
 db==>integrador/dados/banco1.db
 user==>napp
