@@ -1,6 +1,8 @@
 from integrador.classes.Estrategias import Estrategia
 from integrador.classes.Estrategias import Estrategia_SQLite
 from integrador.classes.Estrategias import Estrategia_CSV
+from integrador.classes.Estrategias import Estrategia_Texto_1
+from integrador.classes.Estrategias import Estrategia_Texto_2
 import pytest
 
 
@@ -48,5 +50,45 @@ class TestEstrategia_CSV:
         dados = {'algoritmo': 'CSV',
                  'arquivo': 'integrador/dados/arquivo1.csv'}
         objeto = Estrategia_CSV()
+        dados_retornados = objeto.execute(dados)
+        assert type(dados_retornados) is list
+
+
+class TestEstrategia_Texto_1:
+    def test_instanciar_classe(self):
+        objeto = Estrategia_Texto_1()
+        assert isinstance(objeto, Estrategia)
+        assert isinstance(objeto, Estrategia_Texto_1)
+
+    def test_metodo_parametros_necessarios(self):
+        objeto = Estrategia_Texto_1()
+        dados_retornados = objeto.parametros_necessarios()
+        assert type(dados_retornados) is tuple
+        assert dados_retornados == ('algoritmo', 'arquivo')
+
+    def test_metodo_executar(self):
+        dados = {'algoritmo': 'text_1',
+                 'arquivo': 'integrador/dados/arquivo_texto1_modelo1.txt'}
+        objeto = Estrategia_Texto_1()
+        dados_retornados = objeto.execute(dados)
+        assert type(dados_retornados) is list
+
+
+class TestEstrategia_Texto_2:
+    def test_instanciar_classe(self):
+        objeto = Estrategia_Texto_2()
+        assert isinstance(objeto, Estrategia)
+        assert isinstance(objeto, Estrategia_Texto_2)
+
+    def test_metodo_parametros_necessarios(self):
+        objeto = Estrategia_Texto_2()
+        dados_retornados = objeto.parametros_necessarios()
+        assert type(dados_retornados) is tuple
+        assert dados_retornados == ('algoritmo', 'arquivo')
+
+    def test_metodo_executar(self):
+        dados = {'algoritmo': 'text_2',
+                 'arquivo': 'integrador/dados/arquivo_texto1_modelo2.txt'}
+        objeto = Estrategia_Texto_2()
         dados_retornados = objeto.execute(dados)
         assert type(dados_retornados) is list
