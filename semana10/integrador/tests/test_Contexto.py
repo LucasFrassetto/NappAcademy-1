@@ -84,3 +84,17 @@ class TestContexto:
                  'db': 'integrador/dados/banco1.db'}
         objeto = Contexto(**dados)
         assert type(objeto.executar()) == list
+
+
+    def test_metodo_executar_texto_1(self):
+        dados = {'algoritmo': 'texto_1',
+                 'arquivo': 'integrador/dados/arquivo_texto1_modelo1.txt'}
+        objeto = Contexto(**dados)
+        assert type(objeto.executar()) == list
+
+    def test_metodo_executar_texto_2(self):
+        dados = {'algoritmo': 'texto_2',
+                 'arquivo': 'integrador/dados/arquivo_texto1_modelo2.txt'}
+        objeto = Contexto(**dados)
+        assert type(objeto.executar()) == list
+
