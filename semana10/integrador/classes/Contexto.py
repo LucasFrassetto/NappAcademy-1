@@ -1,14 +1,10 @@
 
 from integrador.classes.Estrategias import Estrategia_CSV
 from integrador.classes.Estrategias import Estrategia_SQLite
-from integrador.classes.Estrategias import Estrategia_Texto_1
-from integrador.classes.Estrategias import Estrategia_Texto_2
 
 estrategias = {
     'csv': Estrategia_CSV(),
     'sqlite': Estrategia_SQLite(),
-    'texto_1': Estrategia_Texto_1(),
-    'texto_2': Estrategia_Texto_2(),
 }
 
 
