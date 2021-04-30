@@ -2,6 +2,8 @@ from produtos.classes.Produtos import Pepsi
 from produtos.classes.Caracteristicas import Caracteristicas
 from produtos.classes.Caracteristicas import Tamanho600ml
 from produtos.classes.Caracteristicas import Tamanho1litro
+from produtos.classes.Caracteristicas import Tamanho2litros
+from produtos.classes.Caracteristicas import Tamanho3litros
 import pytest
 
 
@@ -20,6 +22,22 @@ class TestCaracteristicas:
         objeto = Pepsi(caracteristica)
         assert isinstance(caracteristica, Caracteristicas)
         assert isinstance(caracteristica, Tamanho1litro)
+        assert objeto.operation() == msg
+
+    def test_Pepsi_2_litro(self):
+        msg = 'Pepsi tamanho: 2 litros.'
+        caracteristica = Tamanho2litros()
+        objeto = Pepsi(caracteristica)
+        assert isinstance(caracteristica, Caracteristicas)
+        assert isinstance(caracteristica, Tamanho2litros)
+        assert objeto.operation() == msg
+
+    def test_Pepsi_3_litro(self):
+        msg = 'Pepsi tamanho: 3 litros.'
+        caracteristica = Tamanho3litros()
+        objeto = Pepsi(caracteristica)
+        assert isinstance(caracteristica, Caracteristicas)
+        assert isinstance(caracteristica, Tamanho3litros)
         assert objeto.operation() == msg
 
     def test_class_abstractClass(self):

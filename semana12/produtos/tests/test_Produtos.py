@@ -1,6 +1,8 @@
 from produtos.classes.Produtos import Produto
 from produtos.classes.Produtos import CocaCola
 from produtos.classes.Produtos import Pepsi
+from produtos.classes.Produtos import Dolly
+from produtos.classes.Produtos import GuaranaAntartica
 from produtos.classes.Caracteristicas import Tamanho600ml
 import pytest
 
@@ -18,6 +20,20 @@ class TestColaborador:
         objeto = CocaCola(Tamanho600ml())
         assert isinstance(objeto, Produto)
         assert isinstance(objeto, CocaCola)
+        assert objeto.operation() == msg
+
+    def test_class_Dolly(self):
+        msg = 'Dolly tamanho: 600ml.'
+        objeto = Dolly(Tamanho600ml())
+        assert isinstance(objeto, Produto)
+        assert isinstance(objeto, Dolly)
+        assert objeto.operation() == msg
+
+    def test_class_GuaranaAntartica(self):
+        msg = 'GuaranaAntartica tamanho: 600ml.'
+        objeto = GuaranaAntartica(Tamanho600ml())
+        assert isinstance(objeto, Produto)
+        assert isinstance(objeto, GuaranaAntartica)
         assert objeto.operation() == msg
 
     def test_class_abstractClass(self):
