@@ -1,5 +1,5 @@
 from integrador.classes.Extrair import ERP1, ERP2
-from integrador.classes.Relatorios import Relatorio_TXT
+from integrador.classes.Relatorios import Relatorio_TXT, Relatorio_CSV
 
 extratores = {
     'erp1': ERP1(),
@@ -8,7 +8,7 @@ extratores = {
 
 relatorios = {
     'txt': Relatorio_TXT(),
-#    'csv': Relatorio_CSV(),
+   'csv': Relatorio_CSV(),
 }
 class Abstracao:
     def __init__(self, **kwargs):

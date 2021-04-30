@@ -8,42 +8,30 @@ class ExtrairDados(ABC):
     def get_query(self):
         pass
 
-    @abstractmethod
-    def execute(self):
-        pass
+    # @abstractmethod
+    def execute(self, dados, query_sql):
+        lista_registros = []
+        db = dados['db']
+        with closing(sqlite3.connect(db)) as conn:
+            cursor = conn.cursor()
+            cursor.execute(query_sql)
+            for linha in cursor.fetchall():
+                lista_registros.append(linha)
+        return lista_registros
+
 
 
 class ERP1(ExtrairDados):
     def get_query(self):
-        return "SELECT produto, total, vendido_em FROM vendas;"
+        return "SELECT total, vendido_em FROM vendas;"
 
     def get_query_report(self):
         return "SELECT vendido_em, sum(total) FROM vendas GROUP BY vendido_em;"
 
-    def execute(self, dados, query_sql):
-        lista_registros = []
-        db = dados['db']
-        with closing(sqlite3.connect(db)) as conn:
-            cursor = conn.cursor()
-            cursor.execute(query_sql)
-            for linha in cursor.fetchall():
-                lista_registros.append(linha)
-        return lista_registros
-
 
 class ERP2(ExtrairDados):
     def get_query(self):
-        return "SELECT prod, total, vendido_em FROM total_vendas;"
+        return "SELECT total, vendido_em FROM total_vendas;"
 
     def get_query_report(self):
         return "SELECT vendido_em, sum(total) FROM total_vendas GROUP BY vendido_em;"
-
-    def execute(self, dados, query_sql):
-        lista_registros = []
-        db = dados['db']
-        with closing(sqlite3.connect(db)) as conn:
-            cursor = conn.cursor()
-            cursor.execute(query_sql)
-            for linha in cursor.fetchall():
-                lista_registros.append(linha)
-        return lista_registros
