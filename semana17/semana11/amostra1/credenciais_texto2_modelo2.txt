@@ -1,0 +1,2 @@
+algoritmo==>texto_2
+arquivo==>integrador/dados/arquivo_texto2_modelo2.txt

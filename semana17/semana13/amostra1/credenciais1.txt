@@ -1,0 +1,11 @@
+# Nome do ERP
+erp==>ERP1
+
+# Localização do banco de dados
+db==>integrador/dados/banco_ERP1.db
+
+# Formato do relatório.
+relatorio==>txt
+
+# Nome do arquivo. Espera-se ao final um arquivo erp1.txt
+relatorio_nome==>erp1

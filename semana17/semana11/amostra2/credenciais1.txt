@@ -1,0 +1,4 @@
+algoritmo==>SQLite
+db==>integrador/dados/banco1.db
+user==>napp
+password==>123mudar

@@ -1,0 +1,4 @@
+erp==>ERP2
+db==>integrador/dados/banco_ERP2.db
+relatorio==>csv
+relatorio_nome==>erp2

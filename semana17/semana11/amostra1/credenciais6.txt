@@ -1,0 +1,4 @@
+algoritmo==>csv
+db==>integrador/dados/arquivo2.csv
+user==>napp
+password==>123mudar
